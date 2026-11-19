@@ -1,9 +1,0 @@
-name: personal
-version: 1.0.0
-description: Obsidian chat summaries and GTD project planning. Set OBSIDIAN_VAULT to your vault path.
-author: Matt Fisher
-license: MIT
-type: skill
-targets:
-  - claude
-includes: auto

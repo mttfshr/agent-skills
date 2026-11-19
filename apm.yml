@@ -1,6 +1,6 @@
 name: agent-skills
 version: 2.0.0
-description: Meta-package bundling the spec-workflow and session-hygiene skill packages.
+description: Main package - Obsidian chat summaries and GTD project planning (set OBSIDIAN_VAULT), plus the spec-workflow and session-hygiene packages as dependencies.
 author: Matt Fisher
 license: MIT
 type: hybrid
