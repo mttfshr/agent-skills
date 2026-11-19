@@ -1,0 +1,10 @@
+name: f-library
+version: 1.0.0
+description: Skills specific to the f_ Vsynth module library - bpatcher conventions, helpfile layout, bench-test authoring and module preflight. Only useful inside the f_ repo.
+author: Matt Fisher
+license: MIT
+keywords: [f_, vsynth, max]
+type: skill
+targets:
+  - claude
+includes: auto

@@ -12,3 +12,5 @@ dependencies:
     - ./packages/spec-workflow
     - ./packages/session-hygiene
     - ./packages/productivity
+    - ./packages/max-msp
+    - ./packages/f-library

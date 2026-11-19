@@ -1,0 +1,10 @@
+name: max-msp
+version: 1.0.0
+description: Verified rules and workflows for Max/MSP, gen~ and jit.gl.pix codeboxes, .maxpat JSON authoring, patch notation and pfft~ spectral processing.
+author: Matt Fisher
+license: MIT
+keywords: [max, msp, gen, jitter, dsp]
+type: skill
+targets:
+  - claude
+includes: auto
