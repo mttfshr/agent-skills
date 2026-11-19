@@ -30,9 +30,9 @@ Claude will:
 
 - **Intent-driven**: Different templates for different purposes
 - **Brief by default**: Summaries link to chat for details instead of duplicating content
-- **Your frontmatter**: Uses the same format as your mattfisher.io notes
+- **Your frontmatter**: Uses a standard note format
 - **Auto-naming**: Generates filenames from conversation topic
-- **Vault integration**: Saves directly to `/Users/matt/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian/`
+- **Vault integration**: Saves to `$OBSIDIAN_VAULT/_ideas/` (set `OBSIDIAN_VAULT` in your shell profile, or the skill asks once)
 
 ## Template Types
 

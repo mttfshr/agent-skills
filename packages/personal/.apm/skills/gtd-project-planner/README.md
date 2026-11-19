@@ -134,4 +134,4 @@ SORT status ASC, updated DESC
 
 ## Author
 
-Created for Matt Fisher's GTD + Autofocus workflow in Obsidian.
+Built for a GTD + Autofocus workflow in Obsidian. Set `OBSIDIAN_VAULT` to your vault path.

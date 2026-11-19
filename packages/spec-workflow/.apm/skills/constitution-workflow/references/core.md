@@ -73,7 +73,7 @@ All patterns documented in `artifacts/design-patterns.md`:
 
 ## Quick Reference
 
-**Project Location**: `/Users/matt/[PATH]/[PROJECT_NAME]`
+**Project Location**: `[PATH]/[PROJECT_NAME]`
 **Current Phase**: [PHASE/PERCENTAGE/SESSION NUMBER]
 **Active Directory**: `/[MAIN_WORK_DIR]/`
 **Status**: See STATUS.md and HANDOFF.md for current work

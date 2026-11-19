@@ -1,6 +1,6 @@
 name: personal
 version: 1.0.0
-description: Matt's personal skills - Obsidian chat summaries and GTD project planning. Contains machine-specific vault paths; not intended for general use.
+description: Obsidian chat summaries and GTD project planning. Set OBSIDIAN_VAULT to your vault path.
 author: Matt Fisher
 license: MIT
 type: skill

@@ -23,12 +23,11 @@ Create concise, intent-specific summaries of conversations with hyperlinks to ch
 
 3. **Create Filename** - Auto-generate from topic: `{topic_slug}.md` (e.g., `muse_eeg_streaming_setup.md`)
 
-4. **Detect Vault Location** - Use memory first, filesystem check as fallback:
-   - Check memory for username and vault location
-   - If not in memory, use Desktop Commander to detect:
-     - Check if `/Users/matt.fisher/` exists → work laptop, vault: `/Users/matt.fisher/Obsidian/_ideas/`
-     - Otherwise check if `/Users/matt/` exists → personal laptop, vault: `/Users/matt/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian/_ideas/`
-   - If neither exists, ask user for vault location
+4. **Resolve Vault Location** - find `$VAULT` in this order:
+   - Environment variable `OBSIDIAN_VAULT` (check with shell: `echo $OBSIDIAN_VAULT`)
+   - A saved memory containing the vault path
+   - Otherwise ask the user "Where is your Obsidian vault?" and offer to save the answer to memory
+   - Summaries go in `$VAULT/_ideas/`
 
 5. **Write to Vault** - Use Desktop Commander to write file to detected `_ideas/` folder
 
@@ -284,10 +283,7 @@ type: [user-specified-type]
 
 - Always use Desktop Commander's `write_file` tool to save to vault
 - **Vault location** - Use memory first, filesystem check as fallback:
-  - Memory contains username and vault path for both laptops
-  - If not in memory, detect username from `/Users/` directory
-  - Work laptop (matt.fisher): `/Users/matt.fisher/Obsidian/_ideas/`
-  - Personal laptop (matt): `/Users/matt/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian/_ideas/`
+  - Resolve `$VAULT` as described in step 4; write to `$VAULT/_ideas/`
 - Files are saved directly to `_ideas/` folder
 - User will manually move/organize files later if needed for publishing
 - Always get chat URL for `source` field before creating summary

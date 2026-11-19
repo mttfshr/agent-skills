@@ -11,11 +11,12 @@ Create outcome-driven project plans in Obsidian following GTD methodology, with 
 
 **Projects Directory:** `_projects/` (flat structure, status via metadata)
 
-**Vault Location:**
-- Use memory first (contains username and vault paths for both laptops)
-- If not in memory, detect username from `/Users/` directory:
-  - `/Users/matt.fisher/` → work laptop, vault: `/Users/matt.fisher/Obsidian`
-  - `/Users/matt/` → personal laptop, vault: `/Users/matt/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian`
+**Vault Location** - resolve `$VAULT` in this order:
+1. Environment variable `OBSIDIAN_VAULT` (check with shell: `echo $OBSIDIAN_VAULT`)
+2. A saved memory containing the vault path
+3. Otherwise ask the user "Where is your Obsidian vault?" and offer to save the answer to memory
+
+Projects live in `$VAULT/_projects/`.
 
 **Integration:** Tasks in project docs automatically appear in daily note via Tasks plugin query
 
@@ -163,10 +164,7 @@ filter by function ' />'.includes(task.status.symbol)
 **File Operations:**
 - Use Desktop Commander's `write_file` and `read_file`
 - **Vault location** - Use memory first, filesystem check as fallback:
-  - Memory contains username and vault path for both laptops
-  - If not in memory, detect username from `/Users/` directory
-  - Work laptop (matt.fisher): `/Users/matt.fisher/Obsidian/_projects/`
-  - Personal laptop (matt): `/Users/matt/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian/_projects/`
+  - Resolve `$VAULT` as described under Vault Location; write to `$VAULT/_projects/`
 - Always update `updated` field when modifying
 
 **Summary Integration:**
