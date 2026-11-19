@@ -1,0 +1,13 @@
+name: agent-skills
+version: 2.0.0
+description: Meta-package bundling the spec-workflow and session-hygiene skill packages.
+author: Matt Fisher
+license: MIT
+type: hybrid
+targets:
+  - claude
+includes: auto
+dependencies:
+  apm:
+    - ./packages/spec-workflow
+    - ./packages/session-hygiene

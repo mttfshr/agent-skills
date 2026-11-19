@@ -1,0 +1,10 @@
+name: session-hygiene
+version: 1.0.0
+description: Generic session discipline skills - end-of-session handoff, systematic debugging, verification before completion, and comprehension assessments.
+author: Matt Fisher
+license: MIT
+keywords: [debugging, verification, handoff, workflow]
+type: skill
+targets:
+  - claude
+includes: auto
