@@ -13,7 +13,7 @@ Format: `Verify:` says how the task is checked. Nothing here is committed or pus
 - [ ] D7 personal-scope symlinks for general packages (variant of using `~/.claude/skills/`): decide after T042
 - [ ] D6 channel per surface (A upload-only for own use / B split by surface / C both, identical and checked): decide after T040g
   - Matt 2026-11-22: claude.ai (chat/Cowork) upload set = productivity (2) + spec-workflow (11) only, on each account. Max, session-hygiene, f-library and omp-tools skills reach Claude Code/omp via symlinks and are not uploaded; their old uploads on claude.ai are stale and can be deleted (also removes their `anthropic-skills:` duplicates in Claude Code). No CLI/API exists for claude.ai account skills (support docs; open feature request); replacing = delete + upload by hand, or browser automation (fragile).
-- [ ] D5 home for constitution templates vs references; what stays in claude-scaffold
+- [x] D5 home for constitution templates vs references; what stays in claude-scaffold
 
 Still waiting on Matt: D3, D4, D5; whether to add the CLAUDE.md pointer now (T001); zips are per skill unless he says per package (assumed).
 
@@ -114,8 +114,10 @@ Still waiting on Matt: D3, D4, D5; whether to add the CLAUDE.md pointer now (T00
 
 ## Phase 6: cut over claude-scaffold (needs D5; Code)
 
-- [ ] T060 Remove `skills/` symlinks and `skills-for-upload/*` source folders; keep what D5 says. Update README and QUICKSTART to point here.
-- [ ] T061 Commit the verification-thread edits in claude-scaffold first (Matt reviews `git diff`), so nothing is lost before removal.
+- [x] T060 Remove `skills/` symlinks and `skills-for-upload/*` source folders; keep what D5 says. Update README and QUICKSTART to point here.
+- [x] T061 Commit the verification-thread edits in claude-scaffold first (Matt reviews `git diff`), so nothing is lost before removal.
+  - Done 2026-11-22 (claude-scaffold, local commits, NOT pushed): fc6bab3 verification-thread edits (11 files incl. templates/validator.md); 93658b2 Matt's deliberate removal of README/QUICKSTART/docs; 25eb868 archive (git rm skills/, skills-for-upload/, templates/; pointer README). Hold the push until T034 (work laptop omp config still points at scaffold folders; pulling the archive there would empty them). Stale ignored files remain on disk in claude-scaffold/skills-for-upload (old *.zip, .DS_Store); delete when Matt agrees.
+  - D5 decided: templates live only as constitution-workflow/references (project-scaffolder already reads them there); scaffold repo is an archive.
       Order: T061 must precede T060.
 
 ## Phase 7: close
@@ -128,3 +130,5 @@ Still waiting on Matt: D3, D4, D5; whether to add the CLAUDE.md pointer now (T00
 - [ ] T080 Invariant/property tests for skills' checks (needs a bug-vs-bad-test triage step first).
 - [ ] T081 Fresh-context reviewer at checkpoints for the spec workflow.
 - [ ] T082 If Matt chooses per-package zips, revisit T022.
+
+- scaffold-meta DROPPED 2026-11-22 (Matt): removed from spec-workflow, link pruned, omp now lists 27. Still to do by hand: delete `scaffold-meta` from claude.ai Pro (upload-check reports REMOVED), then `stamp --account pro`. v1.0.0 tag still contains it; next release omits it.
