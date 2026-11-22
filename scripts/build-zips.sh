@@ -17,6 +17,7 @@
 set -eu
 
 REPO=$(cd "$(dirname "$0")/.." && pwd)
+. "$REPO/scripts/lib-skills.sh"
 OUT="$REPO/dist"
 NAMES=""
 
@@ -31,18 +32,7 @@ done
 
 command -v zip >/dev/null 2>&1 || { echo "zip not found" >&2; exit 2; }
 
-# list "<package-skills-dir> <skill>" for every skill in every package
-list_skills() {
-  for pkg in "$REPO"/packages/*/; do
-    [ -f "$pkg/apm.yml" ] || continue
-    for s in "$pkg"skills/*/; do
-      [ -f "$s/SKILL.md" ] || continue
-      printf '%s %s\n' "${pkg}skills" "$(basename "$s")"
-    done
-  done
-}
-
-ALL=$(list_skills)
+ALL=$(skills_list)
 
 # duplicate skill names across packages
 dups=$(printf '%s\n' "$ALL" | awk '{print $2}' | sort | uniq -d)
@@ -63,23 +53,7 @@ printf '%s\n' "$ALL" | while read -r dir skill; do
     case " $NAMES " in *" $skill "*) ;; *) continue ;; esac
   fi
   md="$dir/$skill/SKILL.md"
-  # description may be one line (optionally quoted) or a YAML block scalar (> >- | |-)
-  desc=$(awk '
-    NR==1 && $0!="---" {exit}
-    NR>1 && $0=="---" {exit}
-    /^description:/ {
-      v=$0; sub(/^description:[ ]*/,"",v)
-      if (v ~ /^[>|][-+]?[ ]*$/) { blk=1; next }
-      gsub(/^["\x27]|["\x27]$/,"",v); print v; exit
-    }
-    blk && /^[ \t]+/ { l=$0; sub(/^[ \t]+/,"",l); out = (out=="" ? l : out " " l); next }
-    blk { print out; exit }
-    END { if (blk && out!="") print out }
-  ' "$md" | head -n 1)
-  n=$(printf '%s' "$desc" | wc -m | tr -d ' ')
-  bad=""
-  [ "$n" -gt 1024 ] && bad="description is $n chars (max 1024)"
-  case "$desc" in *"<"*|*">"*) bad="description contains < or > (read as an XML tag)";; esac
+  bad=$(skill_problem "$dir/$skill")
   if [ -n "$bad" ]; then
     printf 'REFUSED  %-34s %s\n' "$skill" "$bad"
     echo x >> "$OUT/.refused.$$"
