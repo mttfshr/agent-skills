@@ -16,9 +16,9 @@ Claude skills packaged for [APM](https://microsoft.github.io/apm/), split by aud
 # apm.yml of your project
 dependencies:
   apm:
-    - OWNER/agent-skills/packages/spec-workflow#v2.1.0
-    - OWNER/agent-skills/packages/session-hygiene#v1.1.0
-    - OWNER/agent-skills/packages/max-msp#v1.0.0
+    - mttfshr/agent-skills/packages/spec-workflow#v2.2.0
+    - mttfshr/agent-skills/packages/session-hygiene#v2.2.0
+    - mttfshr/agent-skills/packages/max-msp#v2.2.0
 ```
 
 Then run `apm install`. Every package has the same shape: `packages/<name>/apm.yml` plus `packages/<name>/skills/<skill>/SKILL.md`. The root `apm.yml` just bundles them all.
