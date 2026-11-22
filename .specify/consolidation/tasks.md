@@ -12,6 +12,7 @@ Format: `Verify:` says how the task is checked. Nothing here is committed or pus
 - [ ] D8 own-machine deploy = symlinks into `~/.claude/skills` and `~/.agents/skills` from one clone per laptop (supersedes local-path D2 for own machines); upload per account; apm for releases and others (proposed 2026-11-22, see plan 'Use cases')
 - [ ] D7 personal-scope symlinks for general packages (variant of using `~/.claude/skills/`): decide after T042
 - [ ] D6 channel per surface (A upload-only for own use / B split by surface / C both, identical and checked): decide after T040g
+  - Matt 2026-11-22: claude.ai (chat/Cowork) upload set = productivity (2) + spec-workflow (11) only, on each account. Max, session-hygiene, f-library and omp-tools skills reach Claude Code/omp via symlinks and are not uploaded; their old uploads on claude.ai are stale and can be deleted (also removes their `anthropic-skills:` duplicates in Claude Code). No CLI/API exists for claude.ai account skills (support docs; open feature request); replacing = delete + upload by hand, or browser automation (fragile).
 - [ ] D5 home for constitution templates vs references; what stays in claude-scaffold
 
 Still waiting on Matt: D3, D4, D5; whether to add the CLAUDE.md pointer now (T001); zips are per skill unless he says per package (assumed).
