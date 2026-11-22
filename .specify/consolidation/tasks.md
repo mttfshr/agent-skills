@@ -48,7 +48,7 @@ Still waiting on Matt: D3, D4, D5; whether to add the CLAUDE.md pointer now (T00
 ## Phase 2: move tooling here (needs D1; chat or Code)
 
 - [x] T020 Edit the three local.md-reading skills to the D1 path. Verify: grep shows no "next to this file" wording.
-  - 2026-11-22: gen-tilde-codebox, jit-gen-codebox, maxpat-json-authoring now read `.claude/local/<skill>.md` in the project; bench-test-authoring's pointer updated. These 4 skills are now STALE on Pro (re-upload and stamp).
+  - 2026-11-22: gen-tilde-codebox, jit-gen-codebox, maxpat-json-authoring now read `.claude/local/<skill>.md` in the project; bench-test-authoring's pointer updated. These 4 skills were re-uploaded to Pro and stamped 2026-11-22 (zips rebuilt after the edit; the first dist zips were pre-edit).
 - [x] T021 Move `f_/skills/evals/` to `agent-skills/evals/` (copy first, delete only with permission). Verify: file count and hashes match.
   - 2026-11-22: f_/skills/evals moved to `evals/` here (31 files). Runner takes `--project-root` (default $EVAL_PROJECT_ROOT or cwd; run it from the f_ checkout for f_ baselines), needs Python 3.10+; home paths scrubbed from results.
 - [x] T027 Write `scripts/link-skills.sh` (symlinks each skill into `${CLAUDE_CONFIG_DIR:-~/.claude}/skills` and `~/.agents/skills`; dry-run, unlink, prune, never touches real files, refuses duplicate names).
