@@ -185,5 +185,5 @@ will not move or has the wrong range. Codebox-side companions (a `Param` named
 
 ---
 
-If a `local.md` sits next to this file, read it too: it holds project-specific
-tooling and conventions that extend this skill.
+If the project has `.claude/local/maxpat-json-authoring.md` (relative to the project root), read it
+too: it holds project-specific tooling and conventions that extend this skill.

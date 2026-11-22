@@ -508,5 +508,5 @@ debugging the DSP.
 
 ---
 
-If a `local.md` sits next to this file, read it too: it holds project-specific
-tooling and conventions that extend this skill.
+If the project has `.claude/local/gen-tilde-codebox.md` (relative to the project root), read it
+too: it holds project-specific tooling and conventions that extend this skill.

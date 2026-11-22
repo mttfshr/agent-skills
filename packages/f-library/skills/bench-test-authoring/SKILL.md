@@ -58,7 +58,7 @@ Each rule points to the numbered convention with the evidence.
 
 3. **The codebox compile caches nothing across jobs, but Params persist** — a fresh
    compile resets declared defaults only for params the job names. The "pin every
-   Param" note in `jit-gen-codebox/local.md` covers the codebox side; this is the same rule
+   Param" note in `.claude/local/jit-gen-codebox.md` covers the codebox side; this is the same rule
    at the test-file layer: build param dicts from a single `PINNED` base dict + the case's
    deltas, not from ad-hoc dicts.
 

@@ -47,8 +47,10 @@ Still waiting on Matt: D3, D4, D5; whether to add the CLAUDE.md pointer now (T00
 
 ## Phase 2: move tooling here (needs D1; chat or Code)
 
-- [ ] T020 Edit the three local.md-reading skills to the D1 path. Verify: grep shows no "next to this file" wording.
-- [ ] T021 Move `f_/skills/evals/` to `agent-skills/evals/` (copy first, delete only with permission). Verify: file count and hashes match.
+- [x] T020 Edit the three local.md-reading skills to the D1 path. Verify: grep shows no "next to this file" wording.
+  - 2026-11-22: gen-tilde-codebox, jit-gen-codebox, maxpat-json-authoring now read `.claude/local/<skill>.md` in the project; bench-test-authoring's pointer updated. These 4 skills are now STALE on Pro (re-upload and stamp).
+- [x] T021 Move `f_/skills/evals/` to `agent-skills/evals/` (copy first, delete only with permission). Verify: file count and hashes match.
+  - 2026-11-22: f_/skills/evals moved to `evals/` here (31 files). Runner takes `--project-root` (default $EVAL_PROJECT_ROOT or cwd; run it from the f_ checkout for f_ baselines), needs Python 3.10+; home paths scrubbed from results.
 - [x] T027 Write `scripts/link-skills.sh` (symlinks each skill into `${CLAUDE_CONFIG_DIR:-~/.claude}/skills` and `~/.agents/skills`; dry-run, unlink, prune, never touches real files, refuses duplicate names).
       Result: done 2026-11-22; 11 sandbox tests pass (dry run, 52 links for 26 skills, idempotent, live edit visible, conflicts left alone, foreign link left alone, prune, unlink only ours, package/target subsets, duplicate refusal, CLAUDE_CONFIG_DIR). NOT yet run against Matt's real home: the chat shell cannot write there (see T028).
 - [~] T028 (partly done 2026-11-22 via Desktop Commander on the personal laptop, /Users/matt): dry run for everything = 52 links, 0 conflicts; real run `--packages session-hygiene --targets claude` created 4 links in ~/.claude/skills (coding-assessment-artifacts, finishing-a-session, systematic-debugging, verification-before-completion), all resolve. Remaining: observe `/skills` in a new Claude Code session (linked and synced copies of the same skill, T040g/T043); link the rest and the agents target; check pi and omp; repeat on the work laptop after `git pull`. Undo: `scripts/link-skills.sh --unlink`. Original task text follows. Matt runs it on a laptop: `cd ~/Github/agent-skills && scripts/link-skills.sh --dry-run`, then for real (start with `--packages session-hygiene --targets claude`). Then check the skill list in Claude Code (`/skills`), pi and omp; undo with `--unlink`. Repeat on the second laptop after `git pull`.
@@ -105,15 +107,20 @@ Still waiting on Matt: D3, D4, D5; whether to add the CLAUDE.md pointer now (T00
 
 ## Phase 5: cut over f_ (needs D1-D3, T040; Code)
 
-- [ ] T050 Add `f_/apm.yml` depending on spec-workflow, session-hygiene, max-msp, f-library per D2; `apm install`.
-- [ ] T051 Move the three `local.md` files to the D1 path in f_.
-- [ ] T052 Update f_ `CLAUDE.md` (Skills in the Flow, two-repo edit rule), `tests/check.sh` and any reference to `skills/check.sh`, `.gitignore` per D3.
-- [ ] T053 Retarget `.specify/preflight/tasks.md` T030/T033 to edit module-preflight here, then `apm install` in f_; update `HANDOFF.md`.
-- [ ] T054 Remove `f_/skills/` (needs delete permission; otherwise `_to_delete/`).
+- [x] T050 Add `f_/apm.yml` depending on spec-workflow, session-hygiene, max-msp, f-library per D2; `apm install`.
+  - 2026-11-22 DECIDED (Matt): symlinks only; no f_/apm.yml and no apm install in f_. f_ gets skills from ~/.claude/skills via link-skills.sh.
+- [x] T051 Move the three `local.md` files to the D1 path in f_.
+  - 2026-11-22: 3 local.md -> f_/.claude/local/<skill>.md.
+- [x] T052 Update f_ `CLAUDE.md` (Skills in the Flow, two-repo edit rule), `tests/check.sh` and any reference to `skills/check.sh`, `.gitignore` per D3.
+  - 2026-11-22: f_ CLAUDE.md gained a Skills section (edit in agent-skills, never a copy); README Skills section and table row rewritten; check.sh permissions removed from .claude/settings.json. Old `skills/<name>` mentions in docs/, tests/, .specify/ left as prose.
+- [~] T053 Retarget `.specify/preflight/tasks.md` T030/T033 to edit module-preflight here, then `apm install` in f_; update `HANDOFF.md`.
+  - For the preflight conversation (f_ .specify/preflight, uncommitted, not edited here): `skills/module-preflight/...` now means `~/Github/agent-skills/packages/f-library/skills/module-preflight/...` (T020 review-rubric.md goes there); T033 re-upload is `scripts/upload-check.sh names|stamp --account <pro|team>` in agent-skills, not `skills/check.sh stamp`; HANDOFF lines naming `skills/...` paths are historical.
+- [x] T054 Remove `f_/skills/` (needs delete permission; otherwise `_to_delete/`).
       Verify: `tests/check.sh quick` passes; a fresh clone plus `apm install` produces the same `.claude/skills/` tree.
 
 ## Phase 6: cut over claude-scaffold (needs D5; Code)
 
+  - 2026-11-22: f_ commit removed skills/ (git rm, 60 files; stale zips deleted). `tests/check.sh quick` NOT run (f_ CLAUDE.md: no test runs without asking); run it when convenient. f_ working tree still has the other conversation's uncommitted work, untouched.
 - [x] T060 Remove `skills/` symlinks and `skills-for-upload/*` source folders; keep what D5 says. Update README and QUICKSTART to point here.
 - [x] T061 Commit the verification-thread edits in claude-scaffold first (Matt reviews `git diff`), so nothing is lost before removal.
   - Done 2026-11-22 (claude-scaffold, local commits, NOT pushed): fc6bab3 verification-thread edits (11 files incl. templates/validator.md); 93658b2 Matt's deliberate removal of README/QUICKSTART/docs; 25eb868 archive (git rm skills/, skills-for-upload/, templates/; pointer README). Hold the push until T034 (work laptop omp config still points at scaffold folders; pulling the archive there would empty them). Stale ignored files remain on disk in claude-scaffold/skills-for-upload (old *.zip, .DS_Store); delete when Matt agrees.
