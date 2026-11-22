@@ -156,7 +156,7 @@ effect layer instead:
 modes because it's a **complete, non-sparse image everywhere** (source
 is baked in) — crossfading between two complete images produces a
 genuine "N% of the way there" blend with no region where one side is
-empty/black, so no double-exposure artifact. the maintainer's own framing: "an
+empty/black, so no double-exposure artifact. The maintainer's own framing: "an
 effect applied 30% isn't the same as an effect applied to 30% of a
 masked shape... it bends 30% of the way toward what it would be at
 100%." Note this is the *reverse* of what earlier guidance in this

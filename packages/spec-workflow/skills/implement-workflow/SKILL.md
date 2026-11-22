@@ -65,11 +65,15 @@ Before starting Phase 0:
    c. Test that it works
    d. Check .claude/skills/validator.md: does this task touch any constraint?
       If yes, verify compliance before committing
+      Run the cheap Mechanical Checks from validator.md (if it has that section)
    e. Suggest commit message: "[T###] Description"
    f. Move to next task
    ```
 
 4. **At phase checkpoint:**
+   - Run the phase's **Verify** (its checkpoint line in tasks.md): `command:` or `test:` run it and read the result; `manual:` say exactly what Matt should look at, then stop and wait for him; `none yet` stop and say so
+   - Run all validator.md **Mechanical Checks** (cheap ones also run after every task)
+   - Record each result with its method (command output, test log, or "Matt looked"); never report a check as passed without one
    - Run validator.md against the completed phase — scan for any constraints the phase touched
    - Use the **verification-before-completion** checklist before declaring the phase done
    - Verify all acceptance criteria pass
@@ -186,7 +190,7 @@ UserService needs validation for email format before it's complete.
 When phase checkpoint is reached:
 
 1. **Run all checkpoint tests:**
-   - Manual testing per checkpoint description
+   - The checkpoint's Verify line first; manual testing only where it says `manual:`
    - Automated tests if they exist
    - Visual verification for UI components
 

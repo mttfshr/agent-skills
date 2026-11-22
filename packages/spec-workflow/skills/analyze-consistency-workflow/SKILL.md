@@ -37,6 +37,7 @@ Load minimal necessary context:
 - User stories
 - Success criteria
 - Edge cases
+- Verify lines (per user story)
 
 **From plan.md:**
 - Architecture/stack choices
@@ -49,6 +50,7 @@ Load minimal necessary context:
 - File paths referenced
 - [P] parallel markers
 - [US#] story labels
+- Checkpoint Verify lines
 
 ### Step 2: Build Semantic Models
 
@@ -64,7 +66,7 @@ Create internal mappings (not in output):
 
 **Task coverage mapping:**
 - Map each task → requirements/stories
-- Infer by keywords and explicit references
+- Use explicit references first (a story's Verify line, [US#] labels, FR IDs); infer by keywords only for what is left
 
 **Constitution rule set:**
 - Extract principle names
@@ -107,6 +109,13 @@ Focus on high-signal findings (limit 50 total):
 - Conflicting requirements (e.g., "Next.js" vs "Vue")
 - User story priorities not matching task phases
 
+#### G. Verification Coverage
+- User story with no Verify line
+- Verify is `none yet` (P1 story: HIGH; P2 or later: MEDIUM)
+- A story's Verify missing from, or different in, its phase checkpoint in tasks.md
+- A `test:` or `command:` Verify with no task creating it, and not already present in the project
+- Plan's Verification Strategy contradicts the spec's Verify
+
 ### Step 4: Severity Assignment
 
 **CRITICAL:**
@@ -120,12 +129,15 @@ Focus on high-signal findings (limit 50 total):
 - Ambiguous security/performance attribute
 - Untestable acceptance criterion
 - User story without tasks
+- P1 story whose Verify is `none yet`, or whose spec Verify is missing from its checkpoint
 
 **MEDIUM:**
 - Terminology drift
 - Missing non-functional task coverage
 - Underspecified edge case
 - Task without requirement mapping
+- P2 or later story whose Verify is `none yet`, or a story with no Verify line
+- A `test:` or `command:` Verify with no creating task
 
 **LOW:**
 - Style/wording improvements
@@ -161,6 +173,14 @@ Output markdown table format:
 | FR-002: Data export | ❌ | None | Missing coverage |
 | FR-003: Session mgmt | ✅ | T020-T023 | |
 [Continue for all requirements]
+
+### Verification Coverage
+
+| Story | Verify (spec) | In checkpoint? | Creating task | Notes |
+|-------|---------------|----------------|---------------|-------|
+| US1 | test: tests/session.spec.js | ✅ | T012 | |
+| US2 | none yet | ❌ | None | P2: MEDIUM |
+[Continue for all stories]
 
 ### Constitution Alignment
 
@@ -328,6 +348,7 @@ Shall I proceed to create a remediation checklist?
 After analysis, verify report includes:
 - [ ] Findings table with ID, severity, location, summary, recommendation
 - [ ] Coverage summary showing requirements → tasks mapping
+- [ ] Verification coverage: each story's Verify line and where it appears in tasks.md
 - [ ] Constitution alignment section
 - [ ] Unmapped tasks list
 - [ ] Metrics summary

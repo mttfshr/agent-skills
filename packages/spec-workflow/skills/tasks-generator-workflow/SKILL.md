@@ -89,6 +89,7 @@ Tasks are organized by user story to enable independent implementation:
 Each story phase:
 - Has a clear goal
 - Has an independent test criterion
+- Has a Verify line (command, test, manual, or none yet), copied from the spec
 - Contains all tasks for that story
 - Ends with a checkpoint
 
@@ -150,6 +151,8 @@ For each user story in the spec:
 3. **Add checkpoint:**
    - How to verify this story works independently
    - What should be testable at this point
+   - The story's **Verify** line from the spec, copied or refined (`command:`, `test:`, or `manual: <what to look at>`)
+   - If the Verify is a `test:` or `command:` that does not exist yet, add a task that creates it before that story's implementation tasks (this replaces "tests first if TDD requested" for that story only)
 
 ### Step 6: Document Dependencies
 
@@ -225,6 +228,7 @@ Document recommended approaches:
 ...
 
 **Checkpoint**: [What should work at this point]
+**Verify**: [command, test, or manual: what to look at]
 
 ---
 
@@ -246,6 +250,7 @@ Document recommended approaches:
 **Goal**: [What this story delivers]
 
 **Independent Test**: [How to verify this works alone]
+**Verify**: [copied from the spec: command | test | manual | none yet]
 
 ### Implementation for User Story 1
 
@@ -253,7 +258,7 @@ Document recommended approaches:
 - [ ] T0XX [US1] Implement [Service] in src/services/service.py
 ...
 
-**Checkpoint**: User Story 1 fully functional and testable
+**Checkpoint**: User Story 1 fully functional and testable (runs the Verify above)
 
 ---
 
@@ -323,6 +328,9 @@ After generation, verify:
 - [ ] All tasks include exact file paths
 - [ ] Source layout defined before any tasks
 - [ ] Each phase has clear checkpoint
+- [ ] Every user story's Verify line from the spec appears in its phase checkpoint
+- [ ] Every checkpoint has a Verify (a command or test, or `manual:` saying what to look at)
+- [ ] A `test:` or `command:` Verify that does not exist yet has a task creating it before the story's implementation tasks
 - [ ] Dependencies documented
 - [ ] Parallel opportunities marked [P]
 - [ ] Implementation strategy included

@@ -16,8 +16,8 @@ Claude skills packaged for [APM](https://microsoft.github.io/apm/), split by aud
 # apm.yml of your project
 dependencies:
   apm:
-    - OWNER/agent-skills/packages/spec-workflow#v2.0.0
-    - OWNER/agent-skills/packages/session-hygiene#v1.0.0
+    - OWNER/agent-skills/packages/spec-workflow#v2.1.0
+    - OWNER/agent-skills/packages/session-hygiene#v1.1.0
     - OWNER/agent-skills/packages/max-msp#v1.0.0
 ```
 

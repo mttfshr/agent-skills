@@ -1,0 +1,9 @@
+name: omp-tools
+version: 1.0.0
+description: Design parallel subagent fan-out jobs for oh-my-pi (omp) and score the reports that come back.
+author: Matt Fisher
+license: MIT
+type: skill
+targets:
+  - claude
+includes: auto

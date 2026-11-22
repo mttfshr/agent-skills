@@ -40,6 +40,7 @@ Break the feature into independent user journeys.
 - Independently testable (can verify it works alone)
 - Independently deliverable (adds value on its own)
 - Priority-ordered (P1 = MVP, P2 = next most important, etc.)
+- Verifiable: says how it will be checked, in a **Verify** line (below). If unsure, write `manual: <what to look at>` rather than leaving it out; `none yet` is allowed and visible.
 
 **Format:**
 ```markdown
@@ -50,6 +51,8 @@ Break the feature into independent user journeys.
 **Why this priority**: [Explain the value]
 
 **Independent Test**: [How to verify this works without other stories]
+
+**Verify**: command: <cmd> -> <expected result> | test: <path or name> | manual: <what to look at> | none yet
 
 **Acceptance Scenarios**:
 1. **Given** [state], **When** [action], **Then** [outcome]
@@ -160,6 +163,8 @@ Without this, nothing else works.
 **Independent Test**: Start a session, see active session view. Close app, reopen, 
 confirm session is still active. Close session, confirm return to start screen.
 
+**Verify**: test: tests/session.spec.js -> start, reload, resume and close cases pass
+
 **Acceptance Scenarios**:
 
 1. **Given** no active session exists, **When** user opens app, **Then** start screen is shown
@@ -177,6 +182,8 @@ A user can write a brief reflection when closing a session, or skip it entirely.
 
 **Independent Test**: Close session, see reflection prompt. Write reflection, 
 confirm saved. Close session, skip reflection, confirm not required.
+
+**Verify**: manual: close a session, confirm the reflection prompt appears, can be skipped, and a written one is saved
 
 **Acceptance Scenarios**:
 
@@ -226,6 +233,7 @@ confirm saved. Close session, skip reflection, confirm not required.
 Before finalizing spec:
 - [ ] Each user story has priority (P1, P2, P3...)
 - [ ] Each user story has independent test
+- [ ] Each user story has a Verify line (command, test, manual, or none yet), or states why it has none
 - [ ] Each user story has 2+ acceptance scenarios
 - [ ] Functional requirements are testable
 - [ ] Success criteria are measurable

@@ -46,9 +46,10 @@ Based on project type and constitution, specify:
 - Where data lives
 - Why this approach
 
-**Testing:**
+**Testing and verification:**
 - Test framework
 - Testing strategy
+- How each user story's **Verify** line (from the spec) will run: command, test, or manual look
 
 **Platform:**
 - Target environment
@@ -179,6 +180,23 @@ Document key technical decisions:
 - Negative: [Tradeoffs]
 ```
 
+### Step 5a: Verification Strategy
+
+For each user story (or dependency block), say how it will be checked, starting from the spec's **Verify** line:
+
+```markdown
+## Verification Strategy
+
+| Story / Block | Verify (from spec) | Mechanism | Runs |
+|---------------|--------------------|-----------|------|
+| US1 | test: tests/session.spec.js | Vitest | every task |
+| US2 | manual: reflection prompt can be skipped | Matt looks | phase checkpoint |
+```
+
+- A `test:` or `command:` that does not exist yet becomes a task in `tasks.md`.
+- `none yet` is allowed but gets flagged by the analyze workflow.
+- Skip for trivial work, and say so.
+
 ### Step 6: Dependency Block Analysis (Natural Pause Points)
 
 **If the plan is complex (5+ user stories), map dependency blocks as natural checkpoints for verification.**
@@ -195,7 +213,7 @@ This provides pause points where you can verify intent and direction before proc
 **Dependencies**: None (or what must exist first)
 **Builds**: [What components/features this creates]
 **Why this block**: [Brief rationale for the dependency]
-**Verification checkpoint**: [How to verify this block works before proceeding]
+**Verification checkpoint**: [How to verify this block works before proceeding: a command, a test, or `manual: <what to look at>`]
 
 **Example:**
 ```markdown
@@ -289,8 +307,8 @@ Create `.specify/plan.md` with complete structure.
 
 ## Constitution Check
 
-✅ Constraint 1: [How plan satisfies it]
-✅ Constraint 2: [How plan satisfies it]
+✅ Constraint 1: [How plan satisfies it] (mechanical: <check name> | judged)
+✅ Constraint 2: [How plan satisfies it] (mechanical: <check name> | judged)
 ⚠️ Potential issue: [Any concerns and mitigations]
 
 ---
@@ -319,13 +337,19 @@ Create `.specify/plan.md` with complete structure.
 
 ---
 
+## Verification Strategy
+
+[Per story or block: Verify from the spec, mechanism, when it runs]
+
+---
+
 ## Dependency Blocks (Optional - for complex plans)
 
 ### Block 1: [Name]
 **Dependencies**: [What must exist first]
 **Builds**: [What this creates]
 **Why this block**: [Rationale]
-**Verification checkpoint**: [How to verify]
+**Verification checkpoint**: [command, test, or manual: what to look at]
 
 ### Block 2: [Name]
 [Same format]
@@ -352,6 +376,7 @@ Before finalizing plan:
 - [ ] Data model covers all entities from spec
 - [ ] Key decisions are documented
 - [ ] Phases map clearly to user stories
+- [ ] Every user story's Verify line is carried into the Verification Strategy
 - [ ] No spec details duplicated (link to spec instead)
 
 ## Output

@@ -146,7 +146,7 @@ Read the templates from this skill's `references/` folder:
 Fill in each template from the constitution:
 
 **core.md** — project identity, IS/ISN'T lists, locked ADRs, common violations, project path
-**validator.md** — quick validation checklist, ADR violations to catch, scope creep patterns
+**validator.md** — quick validation checklist, ADR violations to catch, scope creep patterns, and a **Mechanical Checks** table: for each hard constraint ask whether a command can check it (a test, a linter rule, a grep, a build step) and list those with their cost (cheap = every task, full = checkpoints); leave the rest as judgment items. Ask Matt rather than guessing commands.
 **workflow.md** — replace `[PROJECT_NAME]` placeholders; this template rarely needs other changes
 
 Create all three as `.claude/skills/core.md`, `.claude/skills/validator.md`, `.claude/skills/workflow.md` in the project directory.

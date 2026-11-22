@@ -26,6 +26,7 @@ Test the specific scenario that was broken. Not a related scenario — the exact
 - [ ] The original problem is gone
 - [ ] The behavior matches what was expected, not just "no error"
 - [ ] You tested it in the context where it failed, not just in isolation
+- [ ] The task's or phase's **Verify** line was run, and the project's validator.md Mechanical Checks (if it has any) pass
 
 ### 2. Did you break anything adjacent?
 
@@ -46,6 +47,14 @@ Changes have neighbors. Quickly check:
 - [ ] No debug output left in (console.log, var_dump, die(), etc.)
 - [ ] No commented-out code added during debugging
 - [ ] No hardcoded test values or temporary overrides
+
+### 5. Could this check have failed?
+
+A check that has only ever passed proves little.
+
+- [ ] A new or changed check was seen to fail once (a deliberately broken input, or the code before the fix)
+- [ ] A passing test is not passing because it catches and swallows its own errors, asserts nothing, or tests the wrong thing
+- [ ] If a check failed, you decided whether the code or the check is wrong before changing either
 
 ---
 

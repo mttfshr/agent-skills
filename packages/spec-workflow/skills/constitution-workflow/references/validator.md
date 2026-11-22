@@ -19,6 +19,20 @@ Before ANY recommendation or implementation:
 - [ ] [ALIGNS WITH PRIMARY PURPOSE]
 - [ ] [RESPECTS SCOPE BOUNDARIES]
 
+## Mechanical Checks
+
+Checks a command can run. Judgment items stay in the checklist above.
+
+| Check | Command | Passes when | Cost |
+|-------|---------|-------------|------|
+| [CHECK 1] | `[COMMAND]` | [EXPECTED RESULT] | cheap |
+| [CHECK 2] | `[COMMAND]` | [EXPECTED RESULT] | full |
+
+**cheap** = run after every task. **full** = run at phase checkpoints (slow, needs a running service, or costs time or money).
+Delete this section if the project has no command-checkable rules, and say so.
+
+Before trusting a new check, see it fail once (a deliberately broken input, or the code it was written to catch).
+
 ## Critical ADR Violations to Catch
 
 ### ADR-[X]: [MOST COMMONLY VIOLATED] ⚠️
@@ -76,6 +90,10 @@ When validating code or suggestions, use this format:
 ✅ [Pattern 1]: Correct
 ✅ [Pattern 2]: Respected
 ⚠️ [Pattern 3]: Check [specific aspect]
+
+## Mechanical Checks
+✅ [Check 1]: passed (`[command]`)
+❌ [Check 2]: failed - [output summary]
 
 ## Recommendations
 1. [Specific fix for violation]

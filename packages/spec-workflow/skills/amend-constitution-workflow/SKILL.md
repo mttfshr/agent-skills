@@ -77,6 +77,7 @@ Constitution is the source of truth, but `core.md` and `validator.md` are what g
 **validator.md:**
 - New constraint → add to Quick Validation Checklist and the relevant ADR violations section
 - Corrected constraint → update the checklist and violation examples
+- If a command can check the constraint, add or update its row in Mechanical Checks
 
 Use the templates at `../constitution-workflow/references/` as reference for format if needed.
 

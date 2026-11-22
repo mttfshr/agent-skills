@@ -70,6 +70,11 @@ Perform structured coverage analysis across these categories:
 - Are acceptance criteria testable?
 - Is "done" measurable?
 
+#### Verification
+- Does each user story's Independent Test have a **Verify** line (`command:`, `test:`, `manual:` or `none yet`)?
+- Is there a reference or oracle to compare results against?
+- Is any criterion checkable only by eye? Say so, so it becomes `manual:` on purpose.
+
 #### Placeholders
 - Are there TODO markers?
 - Are there vague adjectives ("robust", "fast", "secure")?
@@ -88,6 +93,7 @@ Generate up to 5 clarification questions.
 2. Security/Privacy (legal or financial implications)
 3. User Experience (core interaction patterns)
 4. Technical Details (can often use defaults)
+5. Verification (only for P1 stories with no Verify line, or where it is `none yet`; recommend `command:` or `test:` when the outcome is numeric, `manual:` when success is how it looks or feels)
 
 **LIMIT: Maximum 5 questions total**
 
@@ -321,6 +327,10 @@ Coverage Summary:
 - Response time targets
 - Concurrent user expectations
 - Data volume assumptions
+
+**Verification:**
+- How each P1 story will be checked (command, test, or by looking)
+- Any reference or oracle to compare against
 
 **Errors:**
 - Validation approach

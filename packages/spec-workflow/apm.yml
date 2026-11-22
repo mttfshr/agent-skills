@@ -1,5 +1,5 @@
 name: spec-workflow
-version: 2.0.0
+version: 2.1.0
 description: Spec-driven development workflow skills - constitution, specify, clarify, plan, tasks, analyze, implement, plus project scaffolding and brownfield analysis.
 author: Matt Fisher
 license: MIT
