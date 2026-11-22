@@ -27,7 +27,6 @@ Written by `scripts/upload-check.sh stamp --account pro`, run AFTER uploading. D
 | `pfft-spectral-processing` | 3f1041c00f46 | 276 | 2026-11-22 |
 | `plan-workflow` | 5a4bb9653daa | 423 | 2026-11-22 |
 | `project-scaffolder` | 6534f05d1739 | 414 | 2026-11-22 |
-| `scaffold-meta` | 253e2202c1df | 187 | 2026-11-22 |
 | `specify-workflow` | 7222e0145987 | 268 | 2026-11-22 |
 | `systematic-debugging` | f5ea3c38a2e8 | 149 | 2026-11-22 |
 | `tasks-generator-workflow` | 967d4cdc8694 | 380 | 2026-11-22 |
