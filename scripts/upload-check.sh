@@ -31,6 +31,10 @@ while [ $# -gt 0 ]; do
   esac
 done
 
+case "$ACCOUNT" in
+  ""|*[!a-z0-9-]*|-*) [ -z "$ACCOUNT" ] || { echo "invalid --account '$ACCOUNT' (use lowercase letters, digits, hyphens)" >&2; exit 2; } ;;
+esac
+
 ALL=$(skills_list)
 dups=$(printf '%s\n' "$ALL" | awk '{print $2}' | sort | uniq -d)
 [ -z "$dups" ] || { echo "duplicate skill names across packages: $dups" >&2; exit 2; }
